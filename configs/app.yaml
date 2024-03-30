@@ -7,6 +7,6 @@ connections:
     DB: crud
     Host: localhost:3306
     User: root
-    Password: 12345
+    Password: test
     # MaxOpen: 10
     # MaxIdle: 2

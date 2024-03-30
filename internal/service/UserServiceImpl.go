@@ -1,8 +1,8 @@
 package service
 
 import (
+	request "app/internal/api/controller/request"
 	"app/internal/model/dao"
-	"app/internal/model/dto"
 	"fmt"
 
 	"gorm.io/gorm"
@@ -18,19 +18,18 @@ func NewUserServiceImpl(db *gorm.DB) UserService {
 	}
 }
 
-func (u *UserServiceImpl) Create(createUserRequest *dto.CreateUserRequest) error {
-	user := &dao.User{
+func (u *UserServiceImpl) Create(createUserRequest request.CreateUserRequest) error {
+	user := dao.User{
 		Email:    createUserRequest.Email,
 		Password: createUserRequest.Password,
 	}
 
-	u.db.Save(user)
+	u.db.Save(&user)
 
 	return nil
 }
 
-func (u *UserServiceImpl) Update(user *dto.UpdateUserRequest) error {
-
+func (u *UserServiceImpl) Update(user request.UpdateUserRequest) error {
 	u.db.
 		Model(&dao.User{}).
 		Where("id=?", user.Id).
@@ -51,7 +50,7 @@ func (u *UserServiceImpl) FindByPk(pk int) (*dao.User, error) {
 	return &user, nil
 }
 
-func (u *UserServiceImpl) Delete(user *dto.DeleteUserRequest) error {
+func (u *UserServiceImpl) Delete(user request.DeleteUserRequest) error {
 
 	u.db.Delete(&dao.User{}, user.Id)
 

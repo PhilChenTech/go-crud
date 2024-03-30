@@ -1,4 +1,4 @@
-package dto
+package request
 
 type CreateUserRequest struct {
 	Username string `json:"username"`
@@ -6,9 +6,6 @@ type CreateUserRequest struct {
 	Password string `json:"password"`
 }
 
-type CreateUserResponse struct {
-	Email string `json:"email"`
-}
 
 type UpdateUserRequest struct {
 	Id       string `json:"id"`
@@ -16,5 +13,5 @@ type UpdateUserRequest struct {
 }
 
 type DeleteUserRequest struct {
-	Id string `json:"id"`
+	Id int `json:"id"`
 }

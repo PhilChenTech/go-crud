@@ -1,13 +1,13 @@
 package service
 
 import (
+	request "app/internal/api/controller/request"
 	"app/internal/model/dao"
-	"app/internal/model/dto"
 )
 
 type UserService interface {
-	Create(createUserRequest *dto.CreateUserRequest) error
-	Update(user *dto.UpdateUserRequest) error
+	Create(createUserRequest request.CreateUserRequest) error
+	Update(user request.UpdateUserRequest) error
 	FindByPk(pk int) (*dao.User, error)
-	Delete(user *dto.DeleteUserRequest) error
+	Delete(user request.DeleteUserRequest) error
 }
