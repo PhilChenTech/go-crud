@@ -1,7 +1,7 @@
 package api
 
 import (
-	"app/internal/api/controller"
+	"app/internal/api/controller/user"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,7 +13,7 @@ type HTTPServer struct {
 
 func NewHTTPServer(router *gin.Engine, userController *controller.UserController) *HTTPServer {
 
-	user := router.Group("/v1/user")
+	user := router.Group("/user/v1")
 	{
 		user.POST("/create", userController.Create)
 		user.GET("/find-by-pk/:pk", userController.FindByPk)

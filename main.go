@@ -3,7 +3,7 @@ package main
 import (
 	"app/database"
 	"app/internal/api"
-	"app/internal/api/controller"
+	"app/internal/api/controller/user"
 	"app/internal/configs"
 	"log"
 
