@@ -2,7 +2,7 @@ package service
 
 import (
 	request "app/internal/api/controller/request"
-	"app/internal/model/dao"
+	"app/internal/entity"
 	"fmt"
 
 	"gorm.io/gorm"
