@@ -1,17 +1,18 @@
-package controller
+package common
 
 import (
+	"app/user/controller"
 	"app/user/controller/findById"
 	"github.com/gin-gonic/gin"
 )
 
 type HTTPServer struct {
 	Router                 *gin.Engine
-	userController         *UserController
+	userController         *controller.UserController
 	findUserByIdController *findById.FindUserByIdController
 }
 
-func NewHTTPServer(router *gin.Engine, userController *UserController, findUserByIdController *findById.FindUserByIdController) *HTTPServer {
+func NewHTTPServer(router *gin.Engine, userController *controller.UserController, findUserByIdController *findById.FindUserByIdController) *HTTPServer {
 
 	user := router.Group("/user")
 	{
