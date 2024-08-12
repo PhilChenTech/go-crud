@@ -1,12 +1,12 @@
 server:
   name: CRUD
-  port: 3000
+  port: 8080
   host: localhost
 connections:
   mysql:
     DB: crud
     Host: localhost:3306
     User: root
-    Password: test
+    Password: test1234
     # MaxOpen: 10
     # MaxIdle: 2

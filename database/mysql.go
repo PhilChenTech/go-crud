@@ -14,16 +14,9 @@ func NewMysql(user, password, host, database string) (*gorm.DB, error) {
 		host,
 		database,
 	)
-
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}
-
-	// err = db.AutoMigrate(&dao.User{})
-	// if err != nil {
-	// 	return nil, err
-	// }
-
 	return db, nil
 }

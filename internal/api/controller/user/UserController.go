@@ -1,12 +1,12 @@
 package controller
 
 import (
-	"app/internal/service"
-	"net/http"
-	"strconv"
 	request "app/internal/api/controller/request"
 	response "app/internal/api/controller/response"
+	"app/internal/service"
 	"github.com/gin-gonic/gin"
+	"net/http"
+	"strconv"
 )
 
 type UserController struct {
@@ -18,26 +18,6 @@ func NewUserController(userService service.UserService) *UserController {
 		userService: userService,
 	}
 }
-type CreateUserResponse struct {
-	Email string `json:"email"`
-}
-
-type CreateUserRequest struct {
-	Username string `json:"username"`
-	Email    string `json:"email"`
-	Password string `json:"password"`
-}
-
-
-type UpdateUserRequest struct {
-	Id       string `json:"id"`
-	Password string `json:"password"`
-}
-
-type DeleteUserRequest struct {
-	Id int `json:"id"`
-}
-
 
 // handleError 处理错误并返回 JSON 响应
 func handleError(ctx *gin.Context, statusCode int, err error) {
@@ -83,13 +63,13 @@ func (u *UserController) FindByPk(ctx *gin.Context) {
 
 // Update 更新用户信息
 func (u *UserController) Update(ctx *gin.Context) {
-	var userRequest request.UpdateUserRequest
-	if err := ctx.BindJSON(&userRequest); err != nil {
+	var updateRequest request.UpdateUserRequest
+	if err := ctx.BindJSON(&updateRequest); err != nil {
 		handleError(ctx, http.StatusBadRequest, err)
 		return
 	}
 
-	if err := u.userService.Update(userRequest); err != nil {
+	if err := u.userService.Update(updateRequest); err != nil {
 		handleError(ctx, http.StatusBadRequest, err)
 		return
 	}

@@ -13,12 +13,12 @@ type HTTPServer struct {
 
 func NewHTTPServer(router *gin.Engine, userController *controller.UserController) *HTTPServer {
 
-	user := router.Group("/user/v1")
+	user := router.Group("/user")
 	{
-		user.POST("/create", userController.Create)
-		user.GET("/find-by-pk/:pk", userController.FindByPk)
-		user.POST("/update", userController.Update)
-		user.POST("/delete", userController.Delete)
+		user.POST("/v1", userController.Create)
+		user.GET("/v1/:pk", userController.FindByPk)
+		user.PUT("/v1", userController.Update)
+		user.DELETE("/v1", userController.Delete)
 	}
 
 	return &HTTPServer{
