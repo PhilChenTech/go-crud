@@ -1,8 +1,8 @@
 package main
 
 import (
-	"app/configs"
-	"app/database"
+	"app/common/config"
+	"app/common/database"
 	"app/user/api"
 	"app/user/api/controller"
 	"app/user/api/controller/findById"
@@ -16,7 +16,7 @@ import (
 func main() {
 
 	// init config
-	config, err := configs.New()
+	config, err := config.New()
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,10 +1,9 @@
-package configs
+package config
 
 import (
 	"fmt"
-	"strings"
-
 	"github.com/spf13/viper"
+	"strings"
 )
 
 type Config struct {
@@ -29,7 +28,7 @@ func New() (*Config, error) {
 	v := viper.New()
 	v.SetConfigType("yaml")
 	v.SetConfigName("app")
-	v.AddConfigPath("./configs")
+	v.AddConfigPath("./common/config")
 	v.AutomaticEnv()
 	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	if err := v.ReadInConfig(); err != nil {
