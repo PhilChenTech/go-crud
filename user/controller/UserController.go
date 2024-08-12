@@ -1,9 +1,9 @@
 package controller
 
 import (
-	response "app/user/api/controller/create"
-	request "app/user/api/controller/delete"
-	"app/user/api/controller/update"
+	"app/user/controller/create"
+	request "app/user/controller/delete"
+	"app/user/controller/update"
 	"app/user/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -26,7 +26,7 @@ func handleError(ctx *gin.Context, statusCode int, err error) {
 
 // Create 处理创建用户请求
 func (u *UserController) Create(ctx *gin.Context) {
-	var userRequest response.CreateUserRequest
+	var userRequest create.CreateUserRequest
 	if err := ctx.BindJSON(&userRequest); err != nil {
 		handleError(ctx, http.StatusBadRequest, err)
 		return
@@ -37,7 +37,7 @@ func (u *UserController) Create(ctx *gin.Context) {
 		return
 	}
 
-	userResponse := response.CreateUserResponse{
+	userResponse := create.CreateUserResponse{
 		Email: userRequest.Email,
 	}
 

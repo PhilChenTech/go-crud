@@ -1,9 +1,9 @@
 package service
 
 import (
-	"app/user/api/controller/create"
-	request "app/user/api/controller/delete"
-	"app/user/api/controller/update"
+	"app/user/controller/create"
+	request "app/user/controller/delete"
+	"app/user/controller/update"
 	"app/user/entity"
 	"fmt"
 

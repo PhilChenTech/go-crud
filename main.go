@@ -3,9 +3,8 @@ package main
 import (
 	"app/common/config"
 	"app/common/database"
-	"app/user/api"
-	"app/user/api/controller"
-	"app/user/api/controller/findById"
+	"app/user/controller"
+	"app/user/controller/findById"
 	"log"
 
 	"app/user/service"
@@ -37,7 +36,7 @@ func main() {
 	userController := controller.NewUserController(userService)
 	findUserByIdController := findById.FindUserController(userService)
 	// init server
-	server := api.NewHTTPServer(gin.Default(), userController, findUserByIdController)
+	server := controller.NewHTTPServer(gin.Default(), userController, findUserByIdController)
 
 	// run server
 	err = server.Router.Run(":" + config.Server.Port)
