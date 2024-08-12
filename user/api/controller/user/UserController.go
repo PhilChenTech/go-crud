@@ -1,9 +1,9 @@
 package controller
 
 import (
-	request "app/internal/api/controller/request"
-	response "app/internal/api/controller/response"
-	"app/internal/service"
+	request "app/user/api/controller/request"
+	response "app/user/api/controller/response"
+	"app/user/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"

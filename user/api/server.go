@@ -1,7 +1,7 @@
 package api
 
 import (
-	"app/internal/api/controller/user"
+	"app/user/api/controller/user"
 
 	"github.com/gin-gonic/gin"
 )

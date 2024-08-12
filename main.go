@@ -2,12 +2,12 @@ package main
 
 import (
 	"app/database"
-	"app/internal/api"
-	"app/internal/api/controller/user"
-	"app/internal/configs"
+	"app/user/api"
+	"app/user/api/controller/user"
+	"app/user/configs"
 	"log"
 
-	"app/internal/service"
+	"app/user/service"
 
 	"github.com/gin-gonic/gin"
 )

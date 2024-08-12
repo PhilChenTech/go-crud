@@ -1,8 +1,8 @@
 package service
 
 import (
-	request "app/internal/api/controller/request"
-	"app/internal/entity"
+	request "app/user/api/controller/request"
+	"app/user/entity"
 )
 
 type UserService interface {
