@@ -1,6 +1,7 @@
 package service
 
 import (
+	"app/user/api/controller/create"
 	request "app/user/api/controller/request"
 	"app/user/entity"
 	"fmt"
@@ -18,8 +19,8 @@ func NewUserServiceImpl(db *gorm.DB) UserService {
 	}
 }
 
-func (u *UserServiceImpl) Create(createUserRequest request.CreateUserRequest) error {
-	user := dao.User{
+func (u *UserServiceImpl) Create(createUserRequest create.CreateUserRequest) error {
+	user := entity.User{
 		Email:    createUserRequest.Email,
 		Password: createUserRequest.Password,
 	}
@@ -31,15 +32,15 @@ func (u *UserServiceImpl) Create(createUserRequest request.CreateUserRequest) er
 
 func (u *UserServiceImpl) Update(user request.UpdateUserRequest) error {
 	u.db.
-		Model(&dao.User{}).
+		Model(&entity.User{}).
 		Where("id=?", user.Id).
-		Updates(dao.User{Password: user.Password})
+		Updates(entity.User{Password: user.Password})
 
 	return nil
 }
 
-func (u *UserServiceImpl) FindByPk(pk int) (*dao.User, error) {
-	user := dao.User{}
+func (u *UserServiceImpl) FindByPk(pk int) (*entity.User, error) {
+	user := entity.User{}
 
 	result := u.db.First(&user, pk)
 	if result.Error != nil {
@@ -52,7 +53,7 @@ func (u *UserServiceImpl) FindByPk(pk int) (*dao.User, error) {
 
 func (u *UserServiceImpl) Delete(user request.DeleteUserRequest) error {
 
-	u.db.Delete(&dao.User{}, user.Id)
+	u.db.Delete(&entity.User{}, user.Id)
 
 	return nil
 }

@@ -1,12 +1,11 @@
 package controller
 
 import (
+	response "app/user/api/controller/create"
 	request "app/user/api/controller/request"
-	response "app/user/api/controller/response"
 	"app/user/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"strconv"
 )
 
 type UserController struct {
@@ -19,14 +18,14 @@ func NewUserController(userService service.UserService) *UserController {
 	}
 }
 
-// handleError 处理错误并返回 JSON 响应
+// aaahandleError 处理错误并返回 JSON 响应
 func handleError(ctx *gin.Context, statusCode int, err error) {
 	ctx.JSON(statusCode, gin.H{"error": err.Error()})
 }
 
 // Create 处理创建用户请求
 func (u *UserController) Create(ctx *gin.Context) {
-	var userRequest request.CreateUserRequest
+	var userRequest response.CreateUserRequest
 	if err := ctx.BindJSON(&userRequest); err != nil {
 		handleError(ctx, http.StatusBadRequest, err)
 		return
@@ -42,23 +41,6 @@ func (u *UserController) Create(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusOK, userResponse)
-}
-
-// FindByPk 根据主键查找用户
-func (u *UserController) FindByPk(ctx *gin.Context) {
-	pk, err := strconv.Atoi(ctx.Param("pk"))
-	if err != nil {
-		handleError(ctx, http.StatusBadRequest, err)
-		return
-	}
-
-	user, err := u.userService.FindByPk(pk)
-	if err != nil {
-		handleError(ctx, http.StatusBadRequest, err)
-		return
-	}
-
-	ctx.JSON(http.StatusOK, user)
 }
 
 // Update 更新用户信息

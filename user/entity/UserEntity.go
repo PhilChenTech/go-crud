@@ -1,4 +1,4 @@
-package dao
+package entity
 
 type User struct {
 	Id       int    `gorm:"primaryKey"`

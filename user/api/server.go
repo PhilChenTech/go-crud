@@ -1,22 +1,23 @@
 package api
 
 import (
-	"app/user/api/controller/user"
-
+	"app/user/api/controller"
+	"app/user/api/controller/findById"
 	"github.com/gin-gonic/gin"
 )
 
 type HTTPServer struct {
-	Router         *gin.Engine
-	userController *controller.UserController
+	Router                 *gin.Engine
+	userController         *controller.UserController
+	findUserByIdController *findById.FindUserByIdController
 }
 
-func NewHTTPServer(router *gin.Engine, userController *controller.UserController) *HTTPServer {
+func NewHTTPServer(router *gin.Engine, userController *controller.UserController, findUserByIdController *findById.FindUserByIdController) *HTTPServer {
 
 	user := router.Group("/user")
 	{
 		user.POST("/v1", userController.Create)
-		user.GET("/v1/:pk", userController.FindByPk)
+		user.GET("/v1/:pk", findUserByIdController.FindByPk)
 		user.PUT("/v1", userController.Update)
 		user.DELETE("/v1", userController.Delete)
 	}

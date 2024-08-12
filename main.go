@@ -4,7 +4,8 @@ import (
 	"app/configs"
 	"app/database"
 	"app/user/api"
-	"app/user/api/controller/user"
+	"app/user/api/controller"
+	"app/user/api/controller/findById"
 	"log"
 
 	"app/user/service"
@@ -34,9 +35,9 @@ func main() {
 	// init controller / service
 	userService := service.NewUserServiceImpl(database)
 	userController := controller.NewUserController(userService)
-
+	findUserByIdController := findById.FindUserController(userService)
 	// init server
-	server := api.NewHTTPServer(gin.Default(), userController)
+	server := api.NewHTTPServer(gin.Default(), userController, findUserByIdController)
 
 	// run server
 	err = server.Router.Run(":" + config.Server.Port)
