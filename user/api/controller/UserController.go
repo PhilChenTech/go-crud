@@ -2,7 +2,8 @@ package controller
 
 import (
 	response "app/user/api/controller/create"
-	request "app/user/api/controller/request"
+	request "app/user/api/controller/delete"
+	"app/user/api/controller/update"
 	"app/user/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -45,7 +46,7 @@ func (u *UserController) Create(ctx *gin.Context) {
 
 // Update 更新用户信息
 func (u *UserController) Update(ctx *gin.Context) {
-	var updateRequest request.UpdateUserRequest
+	var updateRequest update.UpdateUserRequest
 	if err := ctx.BindJSON(&updateRequest); err != nil {
 		handleError(ctx, http.StatusBadRequest, err)
 		return

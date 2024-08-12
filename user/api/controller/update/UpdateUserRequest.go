@@ -1,4 +1,4 @@
-package request
+package update
 
 type UpdateUserRequest struct {
 	Id       string `json:"id"`

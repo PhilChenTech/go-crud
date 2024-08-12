@@ -2,7 +2,8 @@ package service
 
 import (
 	"app/user/api/controller/create"
-	request "app/user/api/controller/request"
+	request "app/user/api/controller/delete"
+	"app/user/api/controller/update"
 	"app/user/entity"
 	"fmt"
 
@@ -30,7 +31,7 @@ func (u *UserServiceImpl) Create(createUserRequest create.CreateUserRequest) err
 	return nil
 }
 
-func (u *UserServiceImpl) Update(user request.UpdateUserRequest) error {
+func (u *UserServiceImpl) Update(user update.UpdateUserRequest) error {
 	u.db.
 		Model(&entity.User{}).
 		Where("id=?", user.Id).
