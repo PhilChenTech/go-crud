@@ -1,10 +1,10 @@
 package main
 
 import (
+	"app/configs"
 	"app/database"
 	"app/user/api"
 	"app/user/api/controller/user"
-	"app/user/configs"
 	"log"
 
 	"app/user/service"
